@@ -1,0 +1,10 @@
+{
+  "name": "Imagens Favoritas",
+  "short_name": "IF",
+  "theme_color": "#424b54",
+  "background_color": "#ffffff",
+  "display": "standalone",
+  "orientation": "portrait",
+  "scope": "/",
+  "start_url": "/"
+}

@@ -73,5 +73,5 @@ gulp.task('default', ['clean'], function () {
     'pages'
   );
 
-  gulp.src('./manifest.json').pipe(gulp.dest('./dist'))
+  gulp.src('./manifest.json').pipe(gulp.dest('./docs'))
 });
