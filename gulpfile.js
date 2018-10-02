@@ -28,14 +28,14 @@ gulp.task('styles', function () {
     ])
     .pipe(autoprefixer({browsers: AUTOPREFIXER_BROWSERS}))
     .pipe(csso())
-    .pipe(gulp.dest('./dist/css'))
+    .pipe(gulp.dest('./docs/css'))
 });
 
 gulp.task('fonts', function() {
   return gulp.src([
     'node_modules/font-awesome/fonts/*'
     ])
-    .pipe(gulp.dest('./dist/fonts'))
+    .pipe(gulp.dest('./docs/fonts'))
 });
 
 gulp.task('scripts', function() {
@@ -46,7 +46,7 @@ gulp.task('scripts', function() {
     './js/**/*.js'
     ])
     .pipe(uglify())
-    .pipe(gulp.dest('./dist/js'))
+    .pipe(gulp.dest('./docs/js'))
 });
 
 gulp.task('pages', function() {
@@ -60,10 +60,10 @@ gulp.task('pages', function() {
     .pipe(inject.replace('node_modules/jquery/dist/jquery.min.js', 'js/jquery.min.js'))
     .pipe(inject.replace('node_modules/vue/dist/vue.min.js', 'js/vue.min.js'))
     .pipe(inject.replace('node_modules/vue-router/dist/vue-router.min.js', 'js/vue-router.min.js'))
-    .pipe(gulp.dest('./dist'));
+    .pipe(gulp.dest('./docs'));
 });
 
-gulp.task('clean', () => del(['dist']));
+gulp.task('clean', () => del(['docs']));
 
 gulp.task('default', ['clean'], function () {
   runSequence(
