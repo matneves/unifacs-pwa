@@ -1,12 +1,3 @@
-var params = {
-  key: '10163233-bd34ba2f90890821e4fed4fe3',
-  image_type: 'photo',
-  per_page: 10
-}
-
-var imagesApi = 'https://pixabay.com/api/?' + $.param(params);
-var search = '';
-
 Vue.component('navbar', {
   methods: {
   }
@@ -23,7 +14,7 @@ Vue.component('search', {
 });
 
 Vue.component('grid', {
-  props: ['items'],
+  props: ['items', 'offline'],
   methods: {
     like: function(item){
       App.saveLike(item);
@@ -47,9 +38,9 @@ var App = new Vue({
       var $self = this;
       $self.items = [];
 
-      $.ajax({url: imagesApi + '&q=' + search, dataType: 'json'})
+      $.ajax({url: $self.imagesApi + '&q=' + $self.searchField, dataType: 'json'})
       .done(function(json) {
-        if (json.hits.length) {
+        if (json.hits && json.hits.length) {
           $(json.hits).each(function(index, el) {
             el.liked = false;
             if ($self.isLiked(el)) {
@@ -58,6 +49,12 @@ var App = new Vue({
 
             $self.items.push(el);
           });
+        }
+
+        if (json.offline) {
+          $self.offline = true;
+        } else {
+          $self.offline = false;
         }
       });
     },
@@ -89,7 +86,7 @@ var App = new Vue({
   },
   watch: {
     searchField: function(text) {
-      search = text;
+      searchField = text;
     },
     $route: function (to, from) {
       this.setRoute();
@@ -98,8 +95,19 @@ var App = new Vue({
   data: function() {
     return {
       items: [],
+      offline: false,
       likes: [],
-      searchField: ''
+      searchField: '',
+      apiParams: {
+        key: '10163233-bd34ba2f90890821e4fed4fe3',
+        image_type: 'photo',
+        per_page: 10
+      }
+    }
+  },
+  computed: {
+    imagesApi: function() {
+      return 'https://pixabay.com/api/?' + $.param(this.apiParams);
     }
   }
 });

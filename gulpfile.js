@@ -38,6 +38,13 @@ gulp.task('fonts', function() {
     .pipe(gulp.dest('./docs/fonts'))
 });
 
+gulp.task('images', function() {
+  return gulp.src([
+    'img/**/*'
+    ])
+    .pipe(gulp.dest('./docs/img'))
+});
+
 gulp.task('scripts', function() {
   return gulp.src([
     'node_modules/jquery/dist/jquery.min.js',
@@ -47,6 +54,14 @@ gulp.task('scripts', function() {
     ])
     .pipe(uglify())
     .pipe(gulp.dest('./docs/js'))
+});
+
+gulp.task('sw', function() {
+  return gulp.src([
+    'sw.js'
+    ])
+    .pipe(uglify())
+    .pipe(gulp.dest('./docs'))
 });
 
 gulp.task('pages', function() {
@@ -69,9 +84,12 @@ gulp.task('default', ['clean'], function () {
   runSequence(
     'styles',
     'fonts',
+    'images',
     'scripts',
+    'sw',
     'pages'
   );
 
-  gulp.src('./manifest.json').pipe(gulp.dest('./docs'))
+  gulp.src('./manifest.json').pipe(gulp.dest('./docs'));
+  gulp.src('./fallback.json').pipe(gulp.dest('./docs'));
 });

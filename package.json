@@ -22,6 +22,7 @@
     "gulp-uglify-es": "^1.0.4",
     "gulp-util": "^3.0.8",
     "jshint": "^2.9.6",
-    "run-sequence": "^2.2.1"
+    "run-sequence": "^2.2.1",
+    "sw-precache": "^5.2.1"
   }
 }

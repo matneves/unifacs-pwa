@@ -12,6 +12,11 @@
 </head>
 <body>
   <div class="container">
+    <div class="center">
+      <a href="#/">
+        <img src="img/icons/icon-96x96.png">
+      </a>
+    </div>
     <div id="vue-app">
       <div id="nav">
         <ul class="clearfix mb2">
@@ -35,20 +40,23 @@
         </div>
       </search>
 
-      <grid :items="items" inline-template>
+      <grid :items="items" :offline="offline" inline-template>
         <div class="clearfix">
-          <div v-if="!items.length">Nenhum resultado encontrado.</div>
+          <div v-if="offline">No momento você está sem conexão. Recarregue a página quando estiver conectado novamente.</div>
           <div v-else>
-            <div v-for="item in items" :id="item.id" class="image col col-12 mb2 p2">
-              <div class="img-container">
-                <img class="block mb2" :src="item.webformatURL">
+            <div v-if="!items.length">Nenhum resultado encontrado.</div>
+            <div v-else>
+              <div v-for="item in items" :id="item.id" class="image col col-12 mb2 p2">
+                <div class="img-container">
+                  <img class="block mb2" :src="item.webformatURL">
 
-                <div class="like left" @click="like(item)">
-                  <i class="fa" v-bind:class="{'fa-heart red': item.liked, 'fa-heart-o': !item.liked}" aria-hidden="true"></i>
-                </div>
+                  <div class="like left" @click="like(item)">
+                    <i class="fa" v-bind:class="{'fa-heart red': item.liked, 'fa-heart-o': !item.liked}" aria-hidden="true"></i>
+                  </div>
 
-                <div class="author right">
-                  <i class="fa fa-user" aria-hidden="true"></i> {{item.user}}
+                  <div class="author right">
+                    <i class="fa fa-user" aria-hidden="true"></i> {{item.user}}
+                  </div>
                 </div>
               </div>
             </div>
@@ -62,5 +70,17 @@
   <script type="text/javascript" src="node_modules/vue/dist/vue.min.js"></script>
   <script type="text/javascript" src="node_modules/vue-router/dist/vue-router.min.js"></script>
   <script type="text/javascript" src="js/app.js"></script>
+
+  <script type="text/javascript">
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', function() {
+        navigator.serviceWorker.register('/sw.js').then(function(registration) {
+          console.log('ServiceWorker registration successful with scope: ', registration.scope);
+        }).catch(function(err) {
+          console.log('ServiceWorker registration failed: ', err);
+        });
+      });
+    }
+  </script>
 </body>
 </html>
