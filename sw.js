@@ -1,32 +1,32 @@
 var urlsToCache = [
-  '/',
-  '/manifest.json',
-  '/fallback.json',
+  './',
+  './manifest.json',
+  './fallback.json',
   // CSS
-  '/css/app.css',
-  '/css/basscss-cp.min.css',
-  '/css/font-awesome.min.css',
-  // // FONTS
-  '/fonts/fontawesome-webfont.eot?v=4.7.0',
-  '/fonts/fontawesome-webfont.svg?v=4.7.0',
-  '/fonts/fontawesome-webfont.ttf?v=4.7.0',
-  '/fonts/fontawesome-webfont.woff?v=4.7.0',
-  '/fonts/fontawesome-webfont.woff2?v=4.7.0',
-  '/fonts/FontAwesome.otf',
-  // // IMG
-  '/img/icons/icon-128x128.png',
-  '/img/icons/icon-144x144.png',
-  '/img/icons/icon-152x152.png',
-  '/img/icons/icon-192x192.png',
-  '/img/icons/icon-384x384.png',
-  '/img/icons/icon-512x512.png',
-  '/img/icons/icon-72x72.png',
-  '/img/icons/icon-96x96.png',
-  // // JS
-  '/js/app.js',
-  '/js/jquery.min.js',
-  '/js/vue-router.min.js',
-  '/js/vue.min.js'
+  './css/app.css',
+  './css/basscss-cp.min.css',
+  './css/font-awesome.min.css',
+  // FONTS
+  './fonts/fontawesome-webfont.eot?v=4.7.0',
+  './fonts/fontawesome-webfont.svg?v=4.7.0',
+  './fonts/fontawesome-webfont.ttf?v=4.7.0',
+  './fonts/fontawesome-webfont.woff?v=4.7.0',
+  './fonts/fontawesome-webfont.woff2?v=4.7.0',
+  './fonts/FontAwesome.otf',
+  // IMG
+  './img/icons/icon-128x128.png',
+  './img/icons/icon-144x144.png',
+  './img/icons/icon-152x152.png',
+  './img/icons/icon-192x192.png',
+  './img/icons/icon-384x384.png',
+  './img/icons/icon-512x512.png',
+  './img/icons/icon-72x72.png',
+  './img/icons/icon-96x96.png',
+  // JS
+  './js/app.js',
+  './js/jquery.min.js',
+  './js/vue-router.min.js',
+  './js/vue.min.js'
 ];
 
 self.addEventListener('install', function(event) {
