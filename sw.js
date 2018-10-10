@@ -62,7 +62,7 @@ async function networkFirst(req) {
     cache.put(req, res.clone());
     return res;
   } catch (error) {
-    var cachedResponse = await cache.match(req);
+    var cachedResponse = await caches.match(req);
 
     return cachedResponse || await caches.match('/fallback.json');
   }
