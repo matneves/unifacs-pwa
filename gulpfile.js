@@ -6,7 +6,6 @@ var htmlmin = require('gulp-htmlmin');
 var inject = require('gulp-inject-string');
 var runSequence = require('run-sequence');
 var del = require('del');
-var gzip = require('gulp-gzip');
 
 // Set the browser that you want to support
 const AUTOPREFIXER_BROWSERS = [
@@ -29,7 +28,6 @@ gulp.task('styles', function () {
     ])
     .pipe(autoprefixer({browsers: AUTOPREFIXER_BROWSERS}))
     .pipe(csso())
-    .pipe(gzip())
     .pipe(gulp.dest('./docs/css'))
 });
 
@@ -55,7 +53,6 @@ gulp.task('scripts', function() {
     './js/**/*.js'
     ])
     .pipe(uglify())
-    .pipe(gzip())
     .pipe(gulp.dest('./docs/js'))
 });
 
@@ -64,7 +61,6 @@ gulp.task('sw', function() {
     'sw.js'
     ])
     .pipe(uglify())
-    .pipe(gzip())
     .pipe(gulp.dest('./docs'))
 });
 
