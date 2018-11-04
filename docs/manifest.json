@@ -6,7 +6,7 @@
   "display": "standalone",
   "orientation": "portrait",
   "scope": "/",
-  "start_url": "/unifacs-pwa/#",
+  "start_url": "/unifacs-pwa/",
   "icons": [
     {
       "src": "img/icons/icon-72x72.png",
